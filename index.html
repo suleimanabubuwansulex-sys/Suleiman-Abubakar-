@@ -1,0 +1,115 @@
+<p>&lt;!DOCTYPE html&gt;</p>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;meta charset="UTF-8"&gt;</p>
+<p>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p>&lt;title&gt;KADUNA LIFE&lt;/title&gt;</p>
+<p>&lt;style&gt;</p>
+<p>body{font-family:Arial;background:#111;color:white;text-align:center;margin:0;padding:10px}</p>
+<p>h1{color:yellow;font-size:40px;margin:10px}</p>
+<p>.box{background:white;color:black;border-radius:15px;padding:15px;margin:10px}</p>
+<p>button{padding:12px 15px;margin:5px;border:none;border-radius:10px;font-weight:bold;font-size:15px;cursor:pointer}</p>
+<p>.green{background:#00c853;color:white}</p>
+<p>.yellow{background:#ffcc00}</p>
+<p>.blue{background:#2196f3;color:white}</p>
+<p>.purple{background:#9c27b0;color:white}</p>
+<p>#balance{font-size:30px;color:green;font-weight:bold}</p>
+<p>.map{background:#2e7d32;color:white;border-radius:15px;padding:15px;margin:10px}</p>
+<p>input{padding:12px;width:80%;border-radius:10px;border:1px solid #ccc;font-size:16px}</p>
+<p>&lt;/style&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body&gt;</p>
+<p> </p>
+<p>&lt;h1&gt;🌇 KADUNA LIFE&lt;/h1&gt;</p>
+<p>&lt;p&gt;Your Own Game - VIRTUAL NAIRA ONLY&lt;/p&gt;</p>
+<p> </p>
+<p>&lt;div class="box"&gt;</p>
+<p>&lt;input id="username" placeholder="Type your username"&gt;</p>
+<p>&lt;br&gt;&lt;br&gt;</p>
+<p>&lt;button class="green" onclick="claim()"&gt;CLAIM ₦10,000,000 VIRTUAL NAIRA&lt;/button&gt;</p>
+<p>&lt;br&gt;</p>
+<p>&lt;button class="yellow" onclick="daily()"&gt;🎁 DAILY REWARD + ₦500,000&lt;/button&gt;</p>
+<p>&lt;br&gt;&lt;br&gt;</p>
+<p>&lt;b&gt;YOUR VIRTUAL NAIRA&lt;/b&gt;&lt;br&gt;</p>
+<p>&lt;div id="balance"&gt;₦0&lt;/div&gt;</p>
+<p>&lt;p id="welcome"&gt;&lt;/p&gt;</p>
+<p>&lt;/div&gt;</p>
+<p> </p>
+<p>&lt;div class="map"&gt;</p>
+<p>&lt;h2&gt;🗺️ MAP OF KADUNA&lt;/h2&gt;</p>
+<p>&lt;button class="blue" onclick="travel('Barnawa')"&gt;🏠 Barnawa&lt;/button&gt;</p>
+<p>&lt;button class="blue" onclick="travel('Kaduna North')"&gt;🏙️ Kaduna North&lt;/button&gt;</p>
+<p>&lt;button class="blue" onclick="travel('Kaduna South')"&gt;🏘️ Kaduna South&lt;/button&gt;</p>
+<p>&lt;button class="blue" onclick="travel('Zaria')"&gt;🎓 Zaria&lt;/button&gt;</p>
+<p>&lt;button class="blue" onclick="travel('Kafanchan')"&gt;🌾 Kafanchan&lt;/button&gt;</p>
+<p>&lt;button class="blue" onclick="travel('Kajuru Castle')"&gt;🏰 Kajuru Castle&lt;/button&gt;</p>
+<p>&lt;p id="location"&gt;You are in: Barnawa&lt;/p&gt;</p>
+<p>&lt;/div&gt;</p>
+<p> </p>
+<p>&lt;div class="box"&gt;</p>
+<p>&lt;h2&gt;💼 HUSTLE&lt;/h2&gt;</p>
+<p>&lt;button class="green" onclick="earn(50000,'Keke Rider')"&gt;🛺 Keke Rider +₦50,000&lt;/button&gt;</p>
+<p>&lt;button class="green" onclick="earn(30000,'Suya Seller')"&gt;🍢 Suya Seller +₦30,000&lt;/button&gt;</p>
+<p>&lt;button class="green" onclick="earn(20000,'Market Work')"&gt;🛍️ Market Work +₦20,000&lt;/button&gt;</p>
+<p>&lt;/div&gt;</p>
+<p> </p>
+<p>&lt;div class="box"&gt;</p>
+<p>&lt;h2&gt;🛒 BUY&lt;/h2&gt;</p>
+<p>&lt;button class="purple" onclick="buy(200000,'Keke Napep')"&gt;🛺 Keke Napep - ₦200,000&lt;/button&gt;</p>
+<p>&lt;button class="purple" onclick="buy(1500000,'Kaduna Car')"&gt;🚗 Kaduna Car - ₦1,500,000&lt;/button&gt;</p>
+<p>&lt;button class="purple" onclick="buy(5000000,'Barnawa House')"&gt;🏠 Barnawa House - ₦5,000,000&lt;/button&gt;</p>
+<p>&lt;button class="purple" onclick="buy(20000000,'Kajuru Castle')"&gt;🏰 Kajuru Castle - ₦20,000,000&lt;/button&gt;</p>
+<p>&lt;p id="items"&gt;Your Items: None yet&lt;/p&gt;</p>
+<p>&lt;/div&gt;</p>
+<p> </p>
+<p>&lt;p&gt;Not real money. Just for fun.&lt;/p&gt;</p>
+<p> </p>
+<p>&lt;script&gt;</p>
+<p>let money = 0;</p>
+<p>let items = [];</p>
+<p>let claimed = false;</p>
+<p> </p>
+<p>function update(){</p>
+<p>document.getElementById('balance').innerText = "₦" + money.toLocaleString();</p>
+<p>document.getElementById('items').innerText = "Your Items: " + (items.length==0 ? "None yet" : items.join(", "));</p>
+<p>}</p>
+<p> </p>
+<p>function claim(){</p>
+<p>if(claimed){alert("You don claim before!");return;}</p>
+<p>let name = document.getElementById('username').value;</p>
+<p>if(name=="") name="Player";</p>
+<p>document.getElementById('welcome').innerText = "Welcome " + name + " to Kaduna Life!";</p>
+<p>money += 10000000;</p>
+<p>claimed = true;</p>
+<p>update();</p>
+<p>alert("Welcome "+name+"! You get ₦10,000,000");</p>
+<p>}</p>
+<p> </p>
+<p>function daily(){</p>
+<p>money += 500000;</p>
+<p>update();</p>
+<p>alert("Daily Reward! +₦500,000");</p>
+<p>}</p>
+<p> </p>
+<p>function travel(place){</p>
+<p>document.getElementById('location').innerText = "You are in: " + place;</p>
+<p>alert("You travel to " + place);</p>
+<p>}</p>
+<p> </p>
+<p>function earn(amount, job){</p>
+<p>money += amount;</p>
+<p>update();</p>
+<p>alert(job + " work done! +₦" + amount.toLocaleString());</p>
+<p>}</p>
+<p> </p>
+<p>function buy(price, item){</p>
+<p>if(money &lt; price){alert("You no get enough money for " + item);return;}</p>
+<p>money -= price;</p>
+<p>items.push(item);</p>
+<p>update();</p>
+<p>alert("You buy " + item + "!");</p>
+<p>}</p>
+<p>update();</p>
+<p>&lt;/script&gt;</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
